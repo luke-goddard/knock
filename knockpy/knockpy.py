@@ -179,17 +179,8 @@ class Start():
         elif args.silent == None:
            _params["silent_mode"] = "no-output"
 
-        # get domain name via positional argument or stdin
-        if sys.stdin.isatty():
-            # positional
-            # knockpy domain.com
-            domain = args.domain
-        else:
-            # stdin
-            # echo "domain.com" | knockpy
-            domain = args.domain.read()
-            domain = domain.strip()
-            
+        domain = args.domain
+        
         # check if the domain name is correct
         if not is_valid_domain(domain):
             parser.print_help(sys.stderr)
